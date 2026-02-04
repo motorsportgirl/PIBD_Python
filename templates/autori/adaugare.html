@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <title>Adaugă Autor</title>
+</head>
+<body class="container" style="max-width: 600px; padding-top: 50px;">
+    <article>
+        <header>
+            <strong>Adaugă un autor nou</strong>
+        </header>
+        <form action="/autori/salveaza" method="POST">
+            <label>Nume</label>
+            <input type="text" name="nume" placeholder="Ex: Mihai Eminescu" required>
+
+            <label>Data Nașterii</label>
+            <input type="date" name="data" required>
+
+            <label>Naționalitate</label>
+            <input type="text" name="nat" placeholder="Ex: Română">
+
+            <div class="grid">
+                <button type="submit">Adaugă în bază</button>
+                <a href="/autori" role="button" class="secondary outline">Înapoi</a>
+            </div>
+        </form>
+    </article>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <title>Adaugă Carte</title>
+</head>
+<body class="container" style="max-width: 600px; padding-top: 50px;">
+    <article>
+        <header>
+            <strong>Adaugă o carte nouă în colecție</strong>
+        </header>
+        <form action="/carti/salveaza" method="POST">
+            <label for="titlu">Titlu Carte</label>
+            <input type="text" id="titlu" name="titlu" placeholder="Ex: Mândrie și Prejudecată" required>
+
+            <label for="editura">Editură</label>
+            <input type="text" id="editura" name="editura" placeholder="Ex: Editura Litera">
+
+            <label for="an">An Publicare</label>
+            <input type="number" id="an" name="an" placeholder="Ex: 1813">
+
+            <label for="cat">Categorie / Gen</label>
+            <input type="text" id="cat" name="cat" placeholder="Ex: Roman clasic">
+
+            <div class="grid">
+                <button type="submit">Salvează Cartea</button>
+                <a href="/carti" role="button" class="secondary outline">Anulează</a>
+            </div>
+        </form>
+    </article>
+</body>
+</html>

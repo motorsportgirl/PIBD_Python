@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <title>Adaugă Bibliotecă</title>
+</head>
+<body class="container" style="max-width: 800px; padding-top: 50px;">
+    <article>
+        <header>
+            <strong>Asociază un Autor și o Carte unei Biblioteci</strong>
+        </header>
+        <form action="/biblioteci/salveaza" method="POST">
+            <div class="grid">
+                <div>
+                    <label for="id_a">Selectează Autorul</label>
+                    <select id="id_a" name="id_a" required>
+                        <option value="" min-width disabled selected>Alege un autor...</option>
+                        {% for autor in autori %}
+                            <option value="{{ autor.IdAutor }}">{{ autor.Nume }} (ID: {{ autor.IdAutor }})</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <label for="id_c">Selectează Cartea</label>
+                    <select id="id_c" name="id_c" required>
+                        <option value="" disabled selected>Alege o carte...</option>
+                        {% for carte in carti %}
+                            <option value="{{ carte.IdCarte }}">{{ carte.Titlu }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <label for="nume">Nume Bibliotecă</label>
+            <input type="text" id="nume" name="nume" placeholder="Ex: Biblioteca Metropolitană" required>
+
+            <label for="adresa">Adresă</label>
+            <input type="text" id="adresa" name="adresa" placeholder="Ex: Bucuresti">
+
+            <label for="nr">Număr Angajați</label>
+            <input type="number" id="nr" name="nr" placeholder="0">
+
+            <div class="grid">
+                <button type="submit">Creează Legătura</button>
+                <a href="/biblioteci" role="button" class="secondary outline">Anulează</a>
+            </div>
+        </form>
+    </article>
+</body>
+</html>

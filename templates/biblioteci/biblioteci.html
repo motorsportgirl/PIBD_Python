@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <title>Vizualizare Biblioteci</title>
+</head>
+<body class="container">
+    <nav>
+        <ul>
+            <li><a href="/" class="secondary">◀ Înapoi</a></li>
+            <li><strong>🏛️ Biblioteci</strong></li>
+        </ul>
+        <ul>
+            <li><a href="/biblioteci/adaugare" role="button" class="outline">+ Adaugă </a></li>
+        </ul>
+    </nav>
+
+    <form method="POST">
+        <figure>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Select</th>
+                        <th>ID</th>
+                        <th>Detalii Autor & Carte</th>
+                        <th>Nume Bibliotecă</th>
+                        <th>Adresă</th>
+                        <th>Angajați</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for b in date %}
+                    <tr>
+                        <td><input type="checkbox" name="selected_id" value="{{ b.IdBiblioteca }}" onclick="selectieUnica(this)"></td>
+                        <td>{{ b.IdBiblioteca }}</td>
+                        <td>
+                            <strong>{{ b.NumeAutor }}</strong><br>
+                            <small>
+                                <i>{{ b.TitluCarte }}</i><br>
+                                <span style="color: #888;">Ed: {{ b.Editura }} | An: {{ b.An_publicare }}</span>
+                            </small>
+                        </td>
+                        <td>{{ b.Nume }}</td>
+                        <td>{{ b.Adresa }}</td>
+                        <td>{{ b.Nr_angajati }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </figure>
+
+        <footer style="display: flex; gap: 20px; justify-content: center;">
+            <button type="submit" name="action" value="modifica" class="warning">📝 Modifică</button>
+            <button type="submit" name="action" value="sterge" class="secondary" onclick="return confirm('Ștergi?')">🗑️ Șterge</button>
+        </footer>
+    </form>
+
+    <script>
+    function selectieUnica(checkbox) {
+        var checkboxes = document.getElementsByName('selected_id');
+        checkboxes.forEach((item) => { if (item !== checkbox) item.checked = false; });
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <title>Modifică Bibliotecă</title>
+</head>
+<body class="container" style="max-width: 700px; padding-top: 30px;">
+    <article>
+        <header>
+            <strong>Editare Bibliotecă (ID: {{ bib.IdBiblioteca }})</strong>
+        </header>
+
+        <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 5px solid #ffc107;">
+            <p style="margin:0;"><strong>Autor:</strong> {{ bib.NumeAutor }}</p>
+            <p style="margin:0;"><strong>Carte:</strong> {{ bib.TitluCarte }}</p>
+            <p style="margin:0; font-size: 0.85rem; color: #666;">
+                Editura: {{ bib.Editura }} | An: {{ bib.An_publicare }}
+            </p>
+        </div>
+
+        <form action="/biblioteci/update" method="POST">
+            <input type="hidden" name="id" value="{{ bib.IdBiblioteca }}">
+
+            <label>Nume Bibliotecă</label>
+            <input type="text" name="nume" value="{{ bib.Nume }}" required>
+
+            <label>Adresă</label>
+            <input type="text" name="adresa" value="{{ bib.Adresa }}">
+
+            <label>Număr Angajați</label>
+            <input type="number" name="nr" value="{{ bib.Nr_angajati }}">
+
+            <div class="grid">
+                <button type="submit">Salvează</button>
+                <a href="/biblioteci" role="button" class="secondary outline">Anulează</a>
+            </div>
+        </form>
+    </article>
+</body>
+</html>

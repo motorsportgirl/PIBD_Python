@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <title>Vizualizare Cărți</title>
+</head>
+<body class="container">
+    <nav>
+        <ul>
+            <li><a href="/" class="secondary">◀ Înapoi la meniu</a></li>
+            <li><strong>📚 Gestiune Cărți</strong></li>
+        </ul>
+        <ul>
+            <li><a href="/carti/adaugare" role="button" class="outline">+ Adaugă </a></li>
+        </ul>
+    </nav>
+
+    <form method="POST">
+        <figure>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Select</th>
+                        <th>ID</th>
+                        <th>Titlu</th>
+                        <th>Editură</th>
+                        <th>An</th>
+                        <th>Categorie</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in date %}
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="selected_id" value="{{ c.IdCarte }}" onclick="selectieUnica(this)">
+                        </td>
+                        <td>{{ c.IdCarte }}</td>
+                        <td>{{ c.Titlu }}</td>
+                        <td>{{ c.Editura }}</td>
+                        <td>{{ c.An_publicare }}</td>
+                        <td>{{ c.Categorie }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </figure>
+
+        <footer style="display: flex; gap: 20px; justify-content: center; margin-top: 30px;">
+            <button type="submit" name="action" value="modifica" class="warning">📝 Modifică </button>
+            <button type="submit" name="action" value="sterge" class="secondary" onclick="return confirm('Sigur ștergi cartea selectată?')">🗑️ Șterge </button>
+        </footer>
+    </form>
+
+    <script>
+    function selectieUnica(checkbox) {
+        var checkboxes = document.getElementsByName('selected_id');
+        checkboxes.forEach((item) => {
+            if (item !== checkbox) item.checked = false;
+        });
+    }
+    </script>
+</body>
+</html>

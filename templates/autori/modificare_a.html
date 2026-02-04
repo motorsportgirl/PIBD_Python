@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <title>Modifică Autor</title>
+</head>
+<body class="container" style="max-width: 600px; padding-top: 50px;">
+    <article>
+        <header>
+            <strong>Modifică Autor (ID: {{autor.IdAutor}})</strong>
+        </header>
+
+        <form action="/autori/update" method="POST">
+            <input type="hidden" name="id" value="{{ autor.IdAutor }}">
+
+            <label for="nume">Nume Complet</label>
+            <input type="text" id="nume" name="nume" value="{{ autor.Nume }}" required>
+
+            <label for="data">Data Nașterii</label>
+            <input type="date" id="data" name="data" value="{{ autor.Data_nastere }}" required>
+
+            <label for="nat">Naționalitate</label>
+            <input type="text" id="nat" name="nat" value="{{ autor.Nationalitate }}">
+
+            <div class="grid">
+                <button type="submit">Salvează Modificările</button>
+                <a href="/autori" role="button" class="secondary outline">Anulează</a>
+            </div>
+        </form>
+    </article>
+</body>
+</html>

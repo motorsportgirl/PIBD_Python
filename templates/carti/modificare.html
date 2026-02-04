@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <title>Modifică Carte</title>
+</head>
+<body class="container" style="max-width: 600px; padding-top: 50px;">
+    <article>
+        <header><strong>Editează Cartea (ID: {{ carte.IdCarte }})</strong></header>
+        <form action="/carti/update" method="POST">
+            <input type="hidden" name="id" value="{{ carte.IdCarte }}">
+            <label>Titlu</label>
+            <input type="text" name="titlu" value="{{ carte.Titlu }}" required>
+            <label>Editură</label>
+            <input type="text" name="editura" value="{{ carte.Editura }}">
+            <label>An Publicare</label>
+            <input type="number" name="an" value="{{ carte.An_publicare }}">
+            <label>Categorie</label>
+            <input type="text" name="cat" value="{{ carte.Categorie }}">
+            <div class="grid">
+                <button type="submit">Salvează</button>
+                <a href="/carti" role="button" class="secondary outline">Anulează</a>
+            </div>
+        </form>
+    </article>
+</body>
+</html>
